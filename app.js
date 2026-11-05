@@ -96,7 +96,7 @@ app.get("/users", (req, res) => {
         <td>${u.name}</td>
         <td>${u.email}</td>
         <td>${u.phone || "-"}</td>
-        <td>S{u.password}</td>
+        <td>${u.password}</td>
         <td>
           <form action="/delete/${u.id}" method="POST" style="display:inline;">
             <button type="submit">Delete</button>
