@@ -44,7 +44,7 @@ app.post("/signup", (req, res) => {
     return res.send("Please enter both name, email, password and phone.");
   }
 
-  const newUser = { id: Date.now(), name, email, phone };
+  const newUser = { id: Date.now(), name, email, phone, password };
   users.push(newUser);
   fs.writeFileSync(DATA_FILE, JSON.stringify(users, null, 2));
 
