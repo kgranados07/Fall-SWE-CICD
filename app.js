@@ -39,9 +39,9 @@ app.get("/", (req, res) => {
 
 // New version: 
 app.post("/signup", (req, res) => {
-  const { name, email, phone } = req.body;
-  if (!name || !email || !phone) {
-    return res.send("Please enter both name, email, and phone.");
+  const { name, email, phone, password } = req.body;
+  if (!name || !email || !phone || !password) {
+    return res.send("Please enter both name, email, password and phone.");
   }
 
   const newUser = { id: Date.now(), name, email, phone };
@@ -86,7 +86,7 @@ app.get("/users", (req, res) => {
   let html = `
   <h2>Registered Users</h2>
   <table border="1" cellpadding="5">
-    <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Action</th></tr>
+    <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Password</th><th>Action</th></tr>
   `;
 
   users.forEach(u => {
@@ -96,6 +96,7 @@ app.get("/users", (req, res) => {
         <td>${u.name}</td>
         <td>${u.email}</td>
         <td>${u.phone || "-"}</td>
+        <td>S{u.password}</td>
         <td>
           <form action="/delete/${u.id}" method="POST" style="display:inline;">
             <button type="submit">Delete</button>
